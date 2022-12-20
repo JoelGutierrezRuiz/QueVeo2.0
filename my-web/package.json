@@ -6,12 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-<<<<<<< HEAD
     "preview": "vite preview"
-=======
-    "preview": "vite preview",
-    "proxy":"http://localhost:3000"
->>>>>>> master
+
   },
   "dependencies": {
     "axios": "^1.2.1",

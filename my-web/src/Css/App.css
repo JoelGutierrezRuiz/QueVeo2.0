@@ -8,11 +8,7 @@
 .App{
   width:100%;
   height: 100vh;
-<<<<<<< HEAD
-  background-color: gray;
-=======
 
->>>>>>> master
 }
 
 /*Header*/
@@ -20,11 +16,7 @@
 .main__header{
   width: 100%;
   height: 70px;
-<<<<<<< HEAD
-  background-color: red;
-=======
   background-color: rgba(136, 181, 194, 0.382);
->>>>>>> master
 }
 
 .header-container{
@@ -38,10 +30,6 @@
   height: 100%;
   display: flex;
   align-items: center;
-<<<<<<< HEAD
-  justify-content: space-between;
-=======
-  justify-content: space-around;
 }
 
 /*tittle queveo*/
@@ -49,5 +37,5 @@
   font-family: Bungee Shade, cursive;
   font-size: 25px;
   color: rgb(32, 116, 122);
->>>>>>> master
+
 }

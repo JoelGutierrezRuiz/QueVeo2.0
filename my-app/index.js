@@ -5,17 +5,6 @@ const cheerio = require("cheerio");
 require("./database");
 const util = require("util");
 const { response } = require("express");
-<<<<<<< HEAD
-const { channel } = require("diagnostics_channel");
-const sleep = util.promisify(setTimeout)
-//imports
-const App = express();
-
-const url = "https://www.tvguia.es/tv/programacion-la-1"//url de incio
-
-
-
-=======
 const Task=require("./task.js");//mongo
 const { channel } = require("diagnostics_channel");
 const sleep = util.promisify(setTimeout)
@@ -36,7 +25,7 @@ async function SubirInfo(info){
         console.log("Cant upload Trivial:")
       }
 }
->>>>>>> master
+
 async function  SacarCanales()
 {
     const canales = []
@@ -62,11 +51,8 @@ async function  SacarCanales()
     })
     return canales
 }
-<<<<<<< HEAD
 
 
-=======
->>>>>>> master
 async function SacarEnlaces(){
     //obtenemos el valor de la funcion sacarCanales (Array para map)
     const canales = await SacarCanales()
@@ -106,12 +92,9 @@ async function SacarEnlaces(){
 }
 
 
-<<<<<<< HEAD
-//SacarEnlaces().then(response=>{console.log(response)})
 
-=======
 SacarEnlaces()//.then(response=>{SubirInfo(response)})
->>>>>>> master
+
 async function SacarTodosProgramas(){
     const canales = await SacarEnlaces() 
     const programas = [] 
@@ -138,13 +121,7 @@ async function SacarTodosProgramas(){
 
 }
 
-<<<<<<< HEAD
 
-
-const nombre = ["tintin","breaking bad", "Better call saul", "Cadena perpetua","avatar","las supernenad", "avatar 2", "airbender","vis a vis","walking dead", "fury", "pinoccio","titanic","lost", "midnight cospell", "el precio del poder","kill bill","hunger games", "cars 2", "masha y el oso","peter pan",]
-
-=======
->>>>>>> master
 async function BuscarImdb(film){
 
     
@@ -197,15 +174,8 @@ async function BuscarImdb(film){
     
 
 }
-<<<<<<< HEAD
-
 
 //BuscarImdb(nombre)
-
-
-=======
-//BuscarImdb(nombre)
->>>>>>> master
 //----------------
 
 
@@ -279,13 +249,10 @@ async function BuscarProgramas (){
 App.listen(3000)
 
 //const puntuacion = $(this).find(".sc-7ab21ed2-1").text()
-<<<<<<< HEAD
-App.get("/",(req,res)=>{
-    
-=======
+
 App.get("/",cors(),async (req,res)=>{
     
     await Task.find().then(response=>{console.log(response);res.send(response)})
->>>>>>> master
+
 
 })

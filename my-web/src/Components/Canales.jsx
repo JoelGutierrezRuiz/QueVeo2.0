@@ -1,12 +1,5 @@
 //imports
 import React from "react";
-<<<<<<< HEAD
-import "../Css/Canales.css"
-//imports
-function Canales (){
-    return(
-        <div className="main__canales"></div>
-=======
 import { useRef } from "react";
 import { useState } from "react";
 import { useEffect } from "react";
@@ -51,7 +44,6 @@ function Canales (){
                 ))
             }
         </div>
->>>>>>> master
         
     );
 }
