@@ -11,7 +11,6 @@ function App() {
       <section className='main__header'>
             <div className='header-container'>
                 <ul className='header-list-container'>
-                    <li>Queveo</li>
                     <li className='header-title'>Queveo</li>
                     <li>Buscar</li>
                 </ul>
