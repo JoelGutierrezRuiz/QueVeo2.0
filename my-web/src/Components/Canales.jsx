@@ -13,7 +13,7 @@ function Canales (){
 
     const Load = async ()=>{
         
-       await fetch("http://localhost:3000/",{method:"GET"}).then(response=>(response.json()).then(response=>{listaCanales.current=response}))
+       await fetch("https://que-veo2-0-api.vercel.app/",{method:"GET"}).then(response=>(response.json()).then(response=>{listaCanales.current=response}))
        console.log(listaCanales.current[0][0])
        const listaNueva = []
        let contador = 0;

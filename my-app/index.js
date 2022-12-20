@@ -251,7 +251,6 @@ App.listen(3000)
 //const puntuacion = $(this).find(".sc-7ab21ed2-1").text()
 
 App.get("/",cors(),async (req,res)=>{
-    res.send("has conectado")
     await Task.find().then(response=>{console.log(response);res.send(response)})
 
 
