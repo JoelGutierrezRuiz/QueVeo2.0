@@ -1,7 +1,17 @@
 /*main*/
 
 .main__canales{
+<<<<<<< HEAD
     width: 100%;
     height: 70px;
     background-color: blue;
+=======
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100px;
+    background-color: white;
+    overflow: auto;
+    padding:0 10px 0 10px;
+>>>>>>> master
 }
