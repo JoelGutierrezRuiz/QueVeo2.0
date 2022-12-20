@@ -6,7 +6,7 @@ import "../Css/Film.css"
 function Film(){
     return(
         <div className="main__film">
-            <img className="film-background" src="https://wallpaperaccess.com/full/5112240.jpg"></img>
+            <img className="film-background" loading="lazy" src="https://wallpaperaccess.com/full/5112240.jpg"></img>
             <div className="film-info-container">
                 <p className="film-info-channel">Paramount</p>
                 <img className="film-info-channelLogo"></img>

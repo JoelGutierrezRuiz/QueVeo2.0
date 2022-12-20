@@ -7,7 +7,7 @@ function Canal (props){
     return(
         <div className="main__canal-container">
             <div className="main__canal">
-                <img className="canal-img" src={props.url}></img>
+                <img className="canal-img" loading="lazy" src={props.url}></img>
             </div>
         </div>
 
