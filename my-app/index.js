@@ -8,11 +8,14 @@ const { response } = require("express");
 const Task=require("./task.js");//mongo
 const { channel } = require("diagnostics_channel");
 const sleep = util.promisify(setTimeout)
+const cors = require("cors")
+const morgan = require("morgan")
 //imports
 const App = express();
+App.use(express.json())
+App.use(morgan("dev"))
 
 const url = "https://www.tvguia.es/tv/programacion-la-1"//url de incio
-
 async function SubirInfo(info){
     const task = new Task(info);
     try{
@@ -22,7 +25,6 @@ async function SubirInfo(info){
         console.log("Cant upload Trivial:")
       }
 }
-
 async function  SacarCanales()
 {
     const canales = []
@@ -48,8 +50,6 @@ async function  SacarCanales()
     })
     return canales
 }
-
-
 async function SacarEnlaces(){
     //obtenemos el valor de la funcion sacarCanales (Array para map)
     const canales = await SacarCanales()
@@ -89,8 +89,7 @@ async function SacarEnlaces(){
 }
 
 
-SacarEnlaces().then(response=>{SubirInfo(response)})
-
+SacarEnlaces()//.then(response=>{SubirInfo(response)})
 async function SacarTodosProgramas(){
     const canales = await SacarEnlaces() 
     const programas = [] 
@@ -116,10 +115,6 @@ async function SacarTodosProgramas(){
     return programas
 
 }
-
-
-
-const nombre = ["tintin","breaking bad", "Better call saul", "Cadena perpetua","avatar","las supernenad", "avatar 2", "airbender","vis a vis","walking dead", "fury", "pinoccio","titanic","lost", "midnight cospell", "el precio del poder","kill bill","hunger games", "cars 2", "masha y el oso","peter pan",]
 
 async function BuscarImdb(film){
 
@@ -173,11 +168,7 @@ async function BuscarImdb(film){
     
 
 }
-
-
 //BuscarImdb(nombre)
-
-
 //----------------
 
 
@@ -251,7 +242,8 @@ async function BuscarProgramas (){
 App.listen(3000)
 
 //const puntuacion = $(this).find(".sc-7ab21ed2-1").text()
-App.get("/",(req,res)=>{
+App.get("/",cors(),async (req,res)=>{
     
+    await Task.find().then(response=>{console.log(response);res.send(response)})
 
 })

@@ -2,10 +2,11 @@ import './Css/App.css'
 import React from 'react'
 import Canales from './Components/Canales'
 import BestRank from './Components/BestRank'
-
-import axios from "axios"
-import cheerio from "cheerio";
+import { useEffect } from 'react'
 function App() {
+
+
+
 
 
   return (
