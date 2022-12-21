@@ -30,6 +30,10 @@ function Canales (){
 
     }
 
+    const HandelChange = (e)=>{
+        
+    }
+
     useEffect(()=>{
         Load().then(()=>{console.log(listaFinal)}) 
     },[])

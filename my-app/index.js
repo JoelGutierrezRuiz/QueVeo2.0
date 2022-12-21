@@ -93,7 +93,7 @@ async function SacarEnlaces(){
 
 
 
-SacarEnlaces()//.then(response=>{SubirInfo(response)})
+//SacarEnlaces().then(response=>{SubirInfo(response)})
 
 async function SacarTodosProgramas(){
     const canales = await SacarEnlaces() 
