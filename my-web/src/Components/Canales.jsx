@@ -5,6 +5,8 @@ import { useState } from "react";
 import { useEffect } from "react";
 import "../Css/Canales.css"
 import Canal from "./Canal";
+import { FiSearch } from 'react-icons/fi';
+
 //imports
 function Canales (){
 
@@ -36,6 +38,15 @@ function Canales (){
 
 
     return(
+        <>
+        <div className="search-canales">
+            <p className="search-canales-title">Canales</p>
+            <div className="search-canales-input-container">
+                <input className="search-canales-input"></input>
+                <FiSearch className="search-icon"></FiSearch>
+            </div>
+            
+        </div>
         <div className="main__canales">
             {
                 listaFinal.map(canal=>(
@@ -44,6 +55,7 @@ function Canales (){
                 ))
             }
         </div>
+        </>
         
     );
 }
