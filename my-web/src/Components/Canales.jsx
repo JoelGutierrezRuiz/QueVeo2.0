@@ -40,7 +40,7 @@ function Canales (){
     }
 
     const HandelChange = (e)=>{
-        const text = e.target.value.toLowerCase()
+        const text = e.target.value.toLowerCase().trim()
         setSearch(text)
     }
 
