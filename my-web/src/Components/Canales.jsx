@@ -12,6 +12,8 @@ function Canales (){
 
     const listaCanales = useRef(null)
     const [listaFinal,setListaFinal] = useState([])
+    const [search,setSearch] = useState("")
+    const elementoContainer = useRef(null)
 
     const Load = async ()=>{
         
@@ -20,32 +22,38 @@ function Canales (){
        let contador = 0;
 
         do{
-            listaNueva.push([listaCanales.current[0][contador][0],listaCanales.current[0][contador][1]])
+            listaNueva.push([listaCanales.current[0][contador][0].toLowerCase(),listaCanales.current[0][contador][1]])
             contador++
        }while(listaCanales.current[0][contador+1])
 
        listaCanales.current=listaNueva;
-       console.log(listaCanales.current+"hello")
 
 
     }
 
     const BuscadorLista = async ()=>{
         const mapaLista = listaCanales.current.map(canal=>(
-            <Canal url={canal[1]}></Canal>
+            <Canal url={canal[1]} search={search} width={document.documentElement.clientWidth} Scroll={Scroll} title={canal[0]}></Canal>
     
         ))
         return mapaLista
     }
 
     const HandelChange = (e)=>{
-        
+        const text = e.target.value.toLowerCase()
+        setSearch(text)
+    }
+
+    const Scroll = (y)=>{
+        elementoContainer.current.scroll(y,0)
+
     }
 
     useEffect(()=>{
         Load().then(()=>{BuscadorLista().then(response=>{setListaFinal(response)})})
         
-    },[])
+        
+    },[search])
     
 
 
@@ -57,15 +65,15 @@ function Canales (){
 
     return(
         <>
-        <div className="search-canales">
+        <div  className="search-canales">
             <p className="search-canales-title">Canales</p>
             <div className="search-canales-input-container">
-                <input className="search-canales-input"></input>
+                <input onChange={HandelChange} className="search-canales-input"></input>
                 <FiSearch className="search-icon"></FiSearch>
             </div>
             
         </div>
-        <div className="main__canales">
+        <div ref={elementoContainer} className="main__canales">
             {
                 listaFinal
             }
