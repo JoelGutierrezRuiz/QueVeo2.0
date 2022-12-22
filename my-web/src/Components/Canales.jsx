@@ -45,7 +45,10 @@ function Canales (){
     }
 
     const Scroll = (y)=>{
-        elementoContainer.current.scroll(y,0)
+        elementoContainer.current.scroll({
+            left: y,
+            behavior: 'smooth'
+          })
 
     }
 
