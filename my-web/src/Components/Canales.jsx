@@ -16,18 +16,26 @@ function Canales (){
     const Load = async ()=>{
         
        await fetch("https://que-veo2-0-api.vercel.app/",{method:"GET"}).then(response=>(response.json()).then(response=>{listaCanales.current=response}))
-       console.log(listaCanales.current[0][0])
        const listaNueva = []
        let contador = 0;
 
-       do{
+        do{
             listaNueva.push([listaCanales.current[0][contador][0],listaCanales.current[0][contador][1]])
             contador++
        }while(listaCanales.current[0][contador+1])
 
-       setListaFinal(listaNueva)
+       listaCanales.current=listaNueva;
+       console.log(listaCanales.current+"hello")
 
 
+    }
+
+    const BuscadorLista = async ()=>{
+        const mapaLista = listaCanales.current.map(canal=>(
+            <Canal url={canal[1]}></Canal>
+    
+        ))
+        return mapaLista
     }
 
     const HandelChange = (e)=>{
@@ -35,9 +43,15 @@ function Canales (){
     }
 
     useEffect(()=>{
-        Load().then(()=>{console.log(listaFinal)}) 
+        Load().then(()=>{BuscadorLista().then(response=>{setListaFinal(response)})})
+        
     },[])
     
+
+
+
+
+
 
 
 
@@ -53,10 +67,7 @@ function Canales (){
         </div>
         <div className="main__canales">
             {
-                listaFinal.map(canal=>(
-                    <Canal url={canal[1]}></Canal>
-
-                ))
+                listaFinal
             }
         </div>
         </>
