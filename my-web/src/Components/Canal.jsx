@@ -16,13 +16,20 @@ function Canal (props){
             console.log(y)
             props.Scroll(y)
             elementoContainer.current.style.borderBottom="3px solid #42f587"
-        }else{elementoContainer.current.style.borderBottom="none"}
+            elemento.current.style.width="125%"
+            elemento.current.style.height="125%"
+            
+        }else{
+            elementoContainer.current.style.borderBottom="none"
+            elemento.current.style.width="100%"
+            elemento.current.style.height="100%"
+        }
     })
 
     return(
         <div ref={elementoContainer} className="main__canal-container">
-            <div ref={elemento} className="main__canal">
-                <img className="canal-img" loading="lazy" src={props.url}></img>
+            <div  className="main__canal">
+                <img ref={elemento} className="canal-img" loading="lazy" src={props.url}></img>
             </div>
         </div>
 
