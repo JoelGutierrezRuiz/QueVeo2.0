@@ -36,11 +36,12 @@
 .search-canales-input{
     border-radius: 10px;
     width:150px;
-    height:25px;
+    height:27px;
     padding:0 10px 0 10px;
     border: none;
-    color: white;
-    background-color: rgba(128, 128, 128, 0.553);
+    color: rgb(255, 255, 255);
+    font-size:15px;
+    background-color: rgba(128, 128, 128, 0.701);
     
 }
 .search-canales-input:focus{
@@ -48,6 +49,7 @@
 }
 
 .search-icon{
+    font-size: 20px;
     color: black;
     margin-left: 20px;
 }
@@ -57,7 +59,7 @@
 .search-canales-title{
     color: rgb(32, 116, 122);
     margin-left: 20px;
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 600;
     font-family: Cabin,sans-serif;
 }
