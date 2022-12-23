@@ -240,10 +240,9 @@ async function BuscarProgramas (){
     return listaFinal
 }
 
-BuscarProgramas().then(response=>{BuscarImdb(response["tnt"])})
+//BuscarProgramas().then(response=>{BuscarImdb(response["tnt"])})
 
 
-//BuscarProgramas().then(response=>{console.log(response["tnt"]);BuscarImdb(response["tnt"])})
 
 
 
