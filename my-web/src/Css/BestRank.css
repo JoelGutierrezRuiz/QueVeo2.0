@@ -10,16 +10,15 @@
 
 .bestRank-desc{
     width: 100%;
-    height:90px;
+    height:40px;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    align-items: flex-end;
 }
 
 .bestRank-desc p{
     margin-left: 20px;
     color: rgb(32, 116, 122);
-    font-size:25px;
     font-weight: 600;
+    font-size:15px;
     font-family: Cabin,sans-serif;
 }

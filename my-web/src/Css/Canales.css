@@ -55,6 +55,9 @@
 /*search title*/
 
 .search-canales-title{
+    color: rgb(32, 116, 122);
     margin-left: 20px;
-    font-size: 20px;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: Cabin,sans-serif;
 }
