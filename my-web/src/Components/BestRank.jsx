@@ -6,9 +6,12 @@ import Film from "./Film.jsx";
 
 function BestRank (){
     return(
+        <>
+
         <div className="main__bestRank">
             <Film></Film>
         </div>
+        </>
     )
 }
 

@@ -1,11 +1,10 @@
 /*main*/
 
 .main__canales{
-
     display: flex;
     align-items: center;
     width: 100%;
-    height: 100px;
+    height: 60px;
     background-color: white;
     overflow: auto;
     padding:0 10px 0 10px;
@@ -20,6 +19,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-top: 10px;
 
 }
 
@@ -39,7 +39,8 @@
     height:25px;
     padding:0 10px 0 10px;
     border: none;
-    background-color: rgba(128, 128, 128, 0.164);
+    color: white;
+    background-color: rgba(128, 128, 128, 0.553);
     
 }
 .search-canales-input:focus{

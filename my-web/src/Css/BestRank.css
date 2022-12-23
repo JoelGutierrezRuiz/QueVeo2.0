@@ -1,5 +1,25 @@
+/*main*/
 .main__bestRank {
     position: relative;
+    margin-top: 20px;
     width: 100%;
     height: 250px;
+}
+
+/*desc bestRank*/
+
+.bestRank-desc{
+    width: 100%;
+    height:90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bestRank-desc p{
+    margin-left: 20px;
+    color: rgb(32, 116, 122);
+    font-size:25px;
+    font-weight: 600;
+    font-family: Cabin,sans-serif;
 }
