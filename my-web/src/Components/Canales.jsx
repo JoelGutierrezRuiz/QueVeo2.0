@@ -69,7 +69,7 @@ function Canales (){
     return(
         <>
         <div  className="search-canales">
-            <p className="search-canales-title">Canales</p>
+            <p className="search-canales-title">Buscar</p>
             <div className="search-canales-input-container">
                 <input onChange={HandelChange} className="search-canales-input"></input>
                 <FiSearch className="search-icon"></FiSearch>
