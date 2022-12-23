@@ -26,6 +26,9 @@ async function SubirInfo(info){
       }
 }
 
+
+
+//Sacamos todos los canales con su respectivo html enlazado a el
 async function  SacarCanales()
 {
     const canales = []
@@ -52,7 +55,7 @@ async function  SacarCanales()
     return canales
 }
 
-
+//Sacamos los enlaces de todos los programas
 async function SacarEnlaces(){
     //obtenemos el valor de la funcion sacarCanales (Array para map)
     const canales = await SacarCanales()
@@ -80,7 +83,7 @@ async function SacarEnlaces(){
             channel = channel.trim().toLowerCase()
             const logo = $(this).find("img").attr("src")
             
-            programas.push([channel,logo])
+            programas.push([channel,html])
             
             
         })
@@ -95,8 +98,11 @@ async function SacarEnlaces(){
 
 //SacarEnlaces().then(response=>{SubirInfo(response)})
 
+
+//Obtenemos todos los programas de todos los canales
 async function SacarTodosProgramas(){
-    const canales = await SacarEnlaces() 
+
+    const canales = await SacarEnlaces()//html de todos los canales
     const programas = [] 
     const todosLosCanales = {}
     canales.map(canal=>{
@@ -137,7 +143,7 @@ async function BuscarImdb(film){
         let filtro = []
         let resultado = null
             
-        const filmPAge = await  axios(`https://www.imdb.com/find?q=${peli}&ref_=nv_sr_sm`,{ 
+        const filmPAge = await  axios(`https://www.imdb.com/find?q=${peli[0]}&ref_=nv_sr_sm`,{ 
             headers: { "Accept-Encoding": "gzip,deflate,compress",Host:"www.imdb.com", "User-Agent":"Mozilla/5.0 (Macintosh; Intel)" } 
         })
     
@@ -158,7 +164,7 @@ async function BuscarImdb(film){
     
         pepe(".sc-7ab21ed2-1",htmlRate).each(function(){
             const puntuacion = pepe(this).text()
-            imdbRate[peli]=puntuacion
+            imdbRate[peli[0]]=puntuacion
     
         })
         }catch{}
@@ -175,8 +181,6 @@ async function BuscarImdb(film){
 
 }
 
-//BuscarImdb(nombre)
-//----------------
 
 
 async function BuscarCanal (busquedaHtml){
@@ -215,10 +219,14 @@ async function BuscarProgramas (){
 
         $(".program-wrapper",html).each(async function(){
             const titulo = $(this).find(".program-title").text()
-            //const categoria = $(this).find(".tvprogram").text()
+            const categoria = $(this).find(".tvprogram").text()
+            const img = $(this).find("img").attr("src")
+            if(categoria=="Cine"&&titulo.trim()){
+                titulo.trim()?await listaFinal[programa[0]].push([titulo,categoria,programa[0],img]):null
+            }
             //const hora = $(this).find(".program-hour").text()
             //const sipnosis = $(this).find(".program-element p").text()
-            titulo.trim()?await listaFinal[programa[0]].push(titulo):null
+            
 
 
         })
@@ -232,17 +240,10 @@ async function BuscarProgramas (){
     return listaFinal
 }
 
+BuscarProgramas().then(response=>{BuscarImdb(response["tnt"])})
+
 
 //BuscarProgramas().then(response=>{console.log(response["tnt"]);BuscarImdb(response["tnt"])})
-
-
-//Una vez guarda la lista de de canales vamos a buscar su programación 
-
-
-
-
-
-//imdb
 
 
 
@@ -251,7 +252,7 @@ App.listen(3000)
 //const puntuacion = $(this).find(".sc-7ab21ed2-1").text()
 
 App.get("/",cors(), (req,res)=>{
-     Task.find().then(response=>{console.log(response);res.send(response)})
+    Task.find().then(response=>{console.log(response);res.send(response)})
 
 
 })
