@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import "../Css/Canales.css"
 import Canal from "./Canal";
 import { FiSearch } from 'react-icons/fi';
+import ProgramaCanal from "./ProgramaCanal";
 
 //imports
 function Canales (){
@@ -14,10 +15,12 @@ function Canales (){
     const [listaFinal,setListaFinal] = useState([])
     const [search,setSearch] = useState("")
     const elementoContainer = useRef(null)
+    const prog = useRef(null)
+    const [renderProg,setRenderProg] = useState([])
 
     const Load = async ()=>{
         
-       await fetch("https://que-veo2-0-api.vercel.app/",{method:"GET"}).then(response=>(response.json()).then(response=>{console.log(response);listaCanales.current=response}))
+       await fetch("https://que-veo2-0-api.vercel.app/",{method:"GET"}).then(response=>(response.json()).then(response=>{listaCanales.current=response}))
        const listaNueva = []
        let contador = 0;
 
@@ -30,10 +33,10 @@ function Canales (){
 
 
     }
-
+    
     const BuscadorLista = async ()=>{
         const mapaLista = listaCanales.current.map(canal=>(
-            <Canal url={canal[1]} search={search} width={document.documentElement.clientWidth} Scroll={Scroll} title={canal[0]}></Canal>
+            <Canal BuscarProg={BuscarProg} url={canal[1]} search={search} width={document.documentElement.clientWidth} Scroll={Scroll} title={canal[0]}></Canal>
     
         ))
         return mapaLista
@@ -52,11 +55,45 @@ function Canales (){
 
     }
 
+
+    const RenderProg = async ()=>{
+
+        const mapaLista = prog.current.map(canal=>(
+            <ProgramaCanal title={canal[0][0]} time={canal[0][4]} logo={canal[0][5]} ></ProgramaCanal>
+    
+        ))
+        setRenderProg(mapaLista)
+    }
+
+    const BuscarProg = async (canal)=>{
+
+
+        await fetch(`https://que-veo2-0-api.vercel.app/canales/${canal}`,{method:"GET"}).then(response=>(response.json()).then(response=>{prog.current=response[canal]}))
+
+        const listaNueva = []
+        let contador = 0;
+
+        do{
+            listaNueva.push([prog.current[contador]])
+            contador++
+       }while(prog.current[contador+1])
+
+       prog.current=listaNueva;
+       RenderProg()
+       console.log(prog.current)
+
+    }
+
+
+
+
+
+
     useEffect(()=>{
         Load().then(()=>{BuscadorLista().then(response=>{setListaFinal(response)})})
         
         
-    },[search])
+    },[search,renderProg])
     
 
 
@@ -76,9 +113,17 @@ function Canales (){
             </div>
             
         </div>
+
         <div ref={elementoContainer} className="main__canales">
             {
                 listaFinal
+            }
+        </div>
+
+
+        <div className="canal-buscado-container">
+            {
+                renderProg
             }
         </div>
         </>
