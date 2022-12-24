@@ -4,7 +4,7 @@ import Canales from './Components/Canales'
 import BestRank from './Components/BestRank'
 import { useEffect } from 'react'
 import {AiOutlineMenu} from 'react-icons/ai'
-import Programas from './Components/Programas'
+import Cine from './Components/Cine'
 function App() {
 
   return (
@@ -20,7 +20,7 @@ function App() {
       </section>
       <BestRank></BestRank>
       <Canales></Canales>
-      <Programas></Programas>
+      <Cine></Cine>
 
     </div>
   )
