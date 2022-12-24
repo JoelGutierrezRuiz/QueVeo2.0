@@ -253,13 +253,17 @@ App.listen(3000)
 //const puntuacion = $(this).find(".sc-7ab21ed2-1").text()
 
 App.get("/",cors(), (req,res)=>{
-    Task.findById("63a123baa2be5d88494d43ac")().then(response=>{console.log(response);res.send(response)})
+    Task.findById("63a123baa2be5d88494d43ac",function(err,doc){
+        console.log(doc);res.send(doc)
+    })
 
 
 })
 
-App.get("/:canal",cors(), (req,res)=>{
-    Task.findById("63a6ac07a590bc02b74d10c8")().then(response=>{console.log(response);res.send(response)})
+App.get("/canales/:canal",cors(), (req,res)=>{
+    Task.findById("63a6ac07a590bc02b74d10c8",function(err,doc){
+        console.log(doc);res.send(doc)
+    })
 
 
 })
