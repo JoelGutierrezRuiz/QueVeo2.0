@@ -260,11 +260,3 @@ App.get("/",cors(), (req,res)=>{
 
 })
 
-App.use("/canales/:canal",cors(), (req,res)=>{
-    Task.findById("63a6ac07a590bc02b74d10c8",req.params.canal,function(err,doc){
-        console.log(doc);res.send(doc)
-    })
-
-
-
-})
