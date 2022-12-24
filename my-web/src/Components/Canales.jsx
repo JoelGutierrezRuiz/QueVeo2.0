@@ -17,14 +17,14 @@ function Canales (){
 
     const Load = async ()=>{
         
-       await fetch("https://que-veo2-0-api.vercel.app/",{method:"GET"}).then(response=>(response.json()).then(response=>{listaCanales.current=response}))
+       await fetch("https://que-veo2-0-api.vercel.app/",{method:"GET"}).then(response=>(response.json()).then(response=>{console.log(response);listaCanales.current=response}))
        const listaNueva = []
        let contador = 0;
 
         do{
-            listaNueva.push([listaCanales.current[0][contador][0].toLowerCase(),listaCanales.current[0][contador][1]])
+            listaNueva.push([listaCanales.current[contador][0].toLowerCase(),listaCanales.current[contador][1]])
             contador++
-       }while(listaCanales.current[0][contador+1])
+       }while(listaCanales.current[contador+1])
 
        listaCanales.current=listaNueva;
 
