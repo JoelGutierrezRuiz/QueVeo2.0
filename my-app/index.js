@@ -103,13 +103,13 @@ async function SacarEnlaces(){
 async function SacarTodosProgramas(){
 
     const canales = await SacarEnlaces()//html de todos los canales
-    const programas = [] 
-    const todosLosCanales = {}
+    const programas = [] //aqui guardamos una lista que contiene el programa y el canal
+    const todosLosCanales = {}//creamos un objeto que recibe el canal con una lista vacia
     canales.map(canal=>{
         const channel = canal[0]
         const html = canal[1]
         const $ = cheerio.load(html)
-        todosLosCanales[channel] = []
+        todosLosCanales[channel] = []//aqui inicializamos el objeto con la lista para un futuro
     
         $(".channel-programs-title a",html).each(function(){
             const title = "https://www.tvguia.es"+$(this).attr("href")
@@ -221,9 +221,11 @@ async function BuscarProgramas (){
             const titulo = $(this).find(".program-title").text()
             const categoria = $(this).find(".tvprogram").text()
             const img = $(this).find("img").attr("src")
-            if(categoria=="Cine"&&titulo.trim()){
-                titulo.trim()?await listaFinal[programa[0]].push([titulo,categoria,programa[0],img]):null
-            }
+            const hora = $(this).find(".program-hour").text()
+            const canal =  $(this).find("img").attr("src")
+
+            titulo.trim()?await listaFinal[programa[0]].push([titulo,categoria,programa[0],img,hora,canal]):null
+
             //const hora = $(this).find(".program-hour").text()
             //const sipnosis = $(this).find(".program-element p").text()
             
@@ -240,7 +242,7 @@ async function BuscarProgramas (){
     return listaFinal
 }
 
-//BuscarProgramas().then(response=>{BuscarImdb(response["tnt"])})
+//BuscarProgramas().then(response=>{SubirInfo(response)})
 
 
 
@@ -251,7 +253,13 @@ App.listen(3000)
 //const puntuacion = $(this).find(".sc-7ab21ed2-1").text()
 
 App.get("/",cors(), (req,res)=>{
-    Task.find().then(response=>{console.log(response);res.send(response)})
+    Task.findById("63a123baa2be5d88494d43ac")().then(response=>{console.log(response);res.send(response)})
+
+
+})
+
+App.get("/:canal",cors(), (req,res)=>{
+    Task.findById("63a6ac07a590bc02b74d10c8")().then(response=>{console.log(response);res.send(response)})
 
 
 })
