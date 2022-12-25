@@ -68,10 +68,11 @@
 /*canal buscado*/
 
 .canal-buscado-container{
+    position: relative;
     display: flex;
     overflow: auto;
     width: 100%;
-    height: 100%;
+    height: 150px;
     margin-bottom: 100px;
     background-color: rgba(67, 67, 67, 0.778);
 }

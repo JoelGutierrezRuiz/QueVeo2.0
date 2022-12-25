@@ -1,0 +1,46 @@
+
+
+
+/*programa-container*/
+.programa-container{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 100%;
+}
+
+/*canal logo*/
+
+.programa-canal-logo-container{
+    position: absolute;
+    width: 25px;
+    height: 25px;
+}
+
+.programa-canal-logo{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+
+/*img programa*/
+
+.programa-img{
+    position: absolute;
+    width:100%;
+    height: 90%;
+    object-fit: cover;
+}
+
+
+/*info*/
+.programa-info{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height:10%;
+    width: 100%;
+}
