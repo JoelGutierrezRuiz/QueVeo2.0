@@ -14,6 +14,11 @@ function ProgramaCanal (props) {
 
         <div className="programa-container">
 
+            <p className="programa-titulo">
+                {props.title}
+            </p>
+
+
             <div className="programa-canal-logo-container">
                 <img className="programa-canal-logo" src={props.logo}></img>
             </div>
