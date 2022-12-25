@@ -120,12 +120,15 @@ function Canales (){
             }
         </div>
 
-
-        <div className="canal-buscado-container">
-            {
-                renderProg
-            }
-        </div>
+        {
+            prog.current?    
+            <div className="canal-buscado-container">
+                {
+                    renderProg
+                }
+            </div>
+            :null
+        }
         </>
         
     );
