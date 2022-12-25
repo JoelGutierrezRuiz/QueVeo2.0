@@ -216,15 +216,21 @@ async function BuscarProgramas (){
         })
         const html = response.data
         $ = cheerio.load(html)
+        listaImg = cheerio.load(html)
 
         $(".program-wrapper",html).each(async function(){
             const titulo = $(this).find(".program-title").text()
             const categoria = $(this).find(".tvprogram").text()
             const img = $(this).find("img").attr("src")
             const hora = $(this).find(".program-hour").text()
-            const canal =  $(this).find("img").attr("src")
+            const canal =  []
+            await listaImg(".program-wrapper img",html).each(async function(){
+                canal.push(listaImg(this).attr("src"))
+            })
+            console.log(canal)
+            
 
-            titulo.trim()?await listaFinal[programa[0]].push([titulo,categoria,programa[0],img,hora,canal]):null
+            titulo.trim()?await listaFinal[programa[0]].push([titulo,categoria,programa[0],hora,canal]):null
 
             //const hora = $(this).find(".program-hour").text()
             //const sipnosis = $(this).find(".program-element p").text()
@@ -261,7 +267,7 @@ App.get("/",cors(), (req,res)=>{
 })
 
 App.get("/canales/:canal",cors(), (req,res)=>{
-    Task.findById("63a6ac07a590bc02b74d10c8",req.params.canal,function(err,doc){
+    Task.findById("63a8b81d5558de4d03330758",req.params.canal,function(err,doc){
         console.log(doc);res.send(doc)
     })
 

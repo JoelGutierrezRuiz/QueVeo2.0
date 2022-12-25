@@ -59,7 +59,7 @@ function Canales (){
     const RenderProg = async ()=>{
 
         const mapaLista = prog.current.map(canal=>(
-            <ProgramaCanal title={canal[0][0]} time={canal[0][4]} logo={canal[0][5]} ></ProgramaCanal>
+            <ProgramaCanal title={canal[0][0]} time={canal[0][4]} img={canal[0][4][1]} logo={canal[0][4][0]} ></ProgramaCanal>
     
         ))
         setRenderProg(mapaLista)
