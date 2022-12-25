@@ -27,7 +27,7 @@ function ProgramaCanal (props) {
                 <p className="cine-peli-rating-number">5,6</p>
             </div>
             
-            <img src="https://m.media-amazon.com/images/M/MV5BMTI1MTY2OTIxNV5BMl5BanBnXkFtZTYwNjQ4NjY3._V1_FMjpg_UX1000_.jpg" ></img>
+            <img src={props.img} ></img>
         </div>
         
     </div>
