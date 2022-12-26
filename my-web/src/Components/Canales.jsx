@@ -17,6 +17,8 @@ function Canales (){
     const elementoContainer = useRef(null)
     const prog = useRef(null)
     const [renderProg,setRenderProg] = useState([])
+    //en esta variable recibimos nombre y logo del canal
+    const [canalInfo,setCanalInfo] = useState(null)
 
     const Load = async ()=>{
         
@@ -65,9 +67,9 @@ function Canales (){
         setRenderProg(mapaLista)
     }
 
-    const BuscarProg = async (canal)=>{
+    const BuscarProg = async (canal,logo)=>{
 
-
+        setCanalInfo([canal,logo])
         await fetch(`https://que-veo2-0-api.vercel.app/canales/${canal}`,{method:"GET"}).then(response=>(response.json()).then(response=>{prog.current=response[canal]}))
 
         const listaNueva = []
@@ -121,12 +123,18 @@ function Canales (){
         </div>
 
         {
-            prog.current?    
+            prog.current?   
+            <> 
+            <div className="canal-buscado-logo-container">
+                <img src={canalInfo[1]}></img>
+                <p>{canalInfo[0].charAt(0).toUpperCase() + canalInfo[0].slice(1)}</p>
+            </div>
             <div className="canal-buscado-container">
                 {
                     renderProg
                 }
             </div>
+            </>
             :null
         }
         </>

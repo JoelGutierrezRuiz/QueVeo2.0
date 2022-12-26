@@ -75,9 +75,21 @@
     width: 100%;
     height: 150px;
     margin-bottom: 40px;
-    background-color: rgba(67, 67, 67, 0.778);
     animation-name:SeeList;
     animation-duration:1s;
+}
+
+
+/*img y canal canal buscaddo*/
+
+.canal-buscado-logo-container{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+}
+.canal-buscado-logo-container p{
+    margin-left:20px;
 }
 
 

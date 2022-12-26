@@ -27,7 +27,7 @@ function Canal (props){
     })
 
     return(
-        <div onClick={()=>{props.BuscarProg(props.title)}} ref={elementoContainer} className="main__canal-container">
+        <div onClick={()=>{props.BuscarProg(props.title,props.url)}} ref={elementoContainer} className="main__canal-container">
             <div  className="main__canal">
                 <img ref={elemento}  className="canal-img" loading="lazy" src={props.url}></img>
             </div>

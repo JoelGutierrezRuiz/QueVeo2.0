@@ -23,9 +23,9 @@ function ProgramaCanal (props) {
                 <img className="programa-canal-logo" src={props.logo}></img>
             </div>
 
-            
-            <img className="programa-img" src={props.img} ></img>
-
+            {
+            props.img?<img className="programa-img" src={props.img} ></img>:null
+            }
         </div>
         
     </div>
