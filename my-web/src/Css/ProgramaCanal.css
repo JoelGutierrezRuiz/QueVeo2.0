@@ -1,6 +1,5 @@
 
 
-
 /*programa-container*/
 .programa-container{
     position: relative;
@@ -10,6 +9,8 @@
     width: 200px;
     height: 100%;
 }
+
+
 
 /*canal logo*/
 
@@ -42,11 +43,12 @@
 
 .programa-img{
     position: absolute;
-    padding: 10px;
+    padding: 5px;
     width:100%;
     height: 100%;
     object-fit: cover;
 }
+
 
 
 /*info*/

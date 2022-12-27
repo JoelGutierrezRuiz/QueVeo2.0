@@ -1,9 +1,13 @@
 //imports
 import React from "react";
+import { useRef } from "react";
 import "../Css/ProgramaCanal.css"
 //imports
 
 function ProgramaCanal (props) {
+
+    const element = useRef(null)
+
     return(
         
         <div className="main__programa">
@@ -24,7 +28,7 @@ function ProgramaCanal (props) {
             </div>
 
             {
-            props.img?<img className="programa-img" src={props.img} ></img>:null
+            props.img?<img className="programa-img" ref={element} src={props.img} ></img>:null
             }
         </div>
         
