@@ -16,7 +16,7 @@ function Canales (){
     const [search,setSearch] = useState("")
     const elementoContainer = useRef(null)
     const prog = useRef(null)
-    const [renderProg,setRenderProg] = useState([])
+    const [renderProg,setRenderProg] = useState(null)
     //en esta variable recibimos nombre y logo del canal
     const [canalInfo,setCanalInfo] = useState(null)
 
@@ -74,7 +74,7 @@ function Canales (){
 
         const listaNueva = []
         let contador = 0;
-
+        try{
         do{
             listaNueva.push([prog.current[contador]])
             contador++
@@ -82,7 +82,7 @@ function Canales (){
 
        prog.current=listaNueva;
        RenderProg()
-       console.log(prog.current)
+        }catch{setRenderProg(null)}
 
     }
 
@@ -123,7 +123,7 @@ function Canales (){
         </div>
 
         {
-            prog.current?   
+            renderProg?   
             <> 
             <div className="canal-buscado-logo-container">
                 <img src={canalInfo[1]}></img>
