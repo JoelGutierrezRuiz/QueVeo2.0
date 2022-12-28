@@ -31,6 +31,7 @@ function ProgramaCanal (props) {
                     <div className="infoPrograma-img-container">
                         <img style={!props.img?{"display":"none"}:null} className="infoPrograma-img"  ref={element} src={props.img} ></img>
                     </div>
+                    <p className="infoPrograma-sipnosis">{props.sipnosis}</p>
                     <p className="infoPrograma-rate">{prueba?prueba:null}</p>
                 </div>
 
