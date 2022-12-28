@@ -15,7 +15,7 @@ function ProgramaCanal (props) {
 
 
     const LoadImdb = async ()=>{
-        await fetch(`https://que-veo2-0-api.vercel.app/programas/${props.title}`,{method:"GET"}).then(response=>(response.json()).then(response=>{console.log(response);setPrueba(response)}))
+        await fetch(`https://que-veo2-0-api.vercel.app/programas/${props.title}`,{method:"GET"}).then(response=>(response.json()).then(response=>{console.log(response);setPrueba(response[props.title])}))
     }
 
     return(
@@ -26,12 +26,12 @@ function ProgramaCanal (props) {
                 
                 <div className="infoPrograma-container">
                     <AiOutlineClose className="infoPrograma-icon" onClick={()=>{setInfoContainer(false)}}  />
-                    <p className="infoPrograma-title">{prueba?prueba[props.title]:null}</p>
+                    <p className="infoPrograma-title">{props.title}</p>
 
                     <div className="infoPrograma-img-container">
                         <img style={!props.img?{"display":"none"}:null} className="infoPrograma-img"  ref={element} src={props.img} ></img>
                     </div>
-                    
+                    <p className="infoPrograma-rate">{prueba?prueba:null}</p>
                 </div>
 
             </div>

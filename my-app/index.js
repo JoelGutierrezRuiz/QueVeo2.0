@@ -224,13 +224,14 @@ async function BuscarProgramas (){
             const img = $(this).find("img").attr("src")
             const hora = $(this).find(".program-hour").text()
             const canal =  []
+            const sipnosis = $(this).find(".program-element p").text()
             await listaImg(".program-wrapper img",html).each(async function(){
                 canal.push(listaImg(this).attr("src"))
             })
-            console.log(canal)
+           
             
 
-            titulo.trim()?await listaFinal[programa[0]].push([titulo,categoria,programa[0],hora,canal]):null
+            titulo.trim()?await listaFinal[programa[0]].push([titulo,categoria,programa[0],hora,canal,sipnosis]):null
 
             //const hora = $(this).find(".program-hour").text()
             //const sipnosis = $(this).find(".program-element p").text()
@@ -244,7 +245,7 @@ async function BuscarProgramas (){
         }catch{}
         
     })
-    await sleep(65000)
+    await sleep(120000)
     return listaFinal
 }
 
@@ -314,7 +315,7 @@ App.get("/",cors(), (req,res)=>{
 })
 
 App.get("/canales/:canal",cors(), (req,res)=>{
-    Task.findById("63a8b81d5558de4d03330758",req.params.canal,function(err,doc){
+    Task.findById("63abd80036383290234a9ff9",req.params.canal,function(err,doc){
         console.log(doc);res.send(doc)
     })
 
