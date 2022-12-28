@@ -65,11 +65,10 @@
 }
 
 
-/*canal buscado*/
+/*canal buscado container main*/
 
 .canal-buscado-container{
     padding: 20px;
-    position: relative;
     display: flex;
     overflow: auto;
     width: 100%;

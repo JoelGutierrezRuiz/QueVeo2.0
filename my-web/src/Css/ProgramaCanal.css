@@ -12,6 +12,7 @@
 
 
 
+
 /*canal logo*/
 
 .programa-canal-logo-container{
@@ -58,4 +59,64 @@
     justify-content: center;
     width: 100%;
 
+}
+
+
+
+/*Main info programa*/
+
+
+.main__infoPrograma{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    left: 0;
+    position: absolute;
+    width: 100%;
+    height: 500px;
+    background-color: rgba(255, 0, 0, 0.286);
+}
+
+/*principal inside container*/
+.infoPrograma-container{
+    display: grid;
+    grid-template-rows: 10% 10% auto;
+    justify-content: center;
+    text-align: center;
+    width: 80%;
+    height: 80%;
+    background-color: white;
+    animation-name: openInfo;
+    animation-duration:.5s;
+}
+
+@keyframes openInfo {
+    0%{
+        width: 0%;
+        height: 0%;
+    }
+    100%{
+        width: 80%;
+        height: 80%;
+    }
+}
+
+/*info programa img*/
+.infoPrograma-container img{
+    width:100%;
+    height: 100px;
+    object-fit: contain;
+}
+
+.infoPrograma-title{
+    width: 100%;
+    height: 50px;
+}
+
+/*icon close*/
+.infoPrograma-icon{
+    margin: auto;
+    font-size: 25px;
+    top: 0;
 }
