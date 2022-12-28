@@ -290,8 +290,7 @@ async function BuscarImdbSolo(film){
     
         })
         }catch{}
-
-    await sleep(500)    
+    
     console.log(imdbRate)
     return imdbRate
     
@@ -299,8 +298,6 @@ async function BuscarImdbSolo(film){
     
 
 }
-
-
 
 
 
