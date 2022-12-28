@@ -61,7 +61,7 @@ function Canales (){
     const RenderProg = async ()=>{
 
         const mapaLista = prog.current.map(canal=>(
-            <ProgramaCanal title={canal[0][0]} time={canal[0][3]} img={canal[0][4][1]} logo={canal[0][4][0]} simpnosis={canal[0][5][0]} ></ProgramaCanal>
+            <ProgramaCanal title={canal[0][0]} time={canal[0][3]} img={canal[0][4][1]} logo={canal[0][4][0]} sipnosis={canal[0][5][1]} ></ProgramaCanal>
     
         ))
         setRenderProg(mapaLista)
@@ -70,7 +70,7 @@ function Canales (){
     const BuscarProg = async (canal,logo)=>{
 
         setCanalInfo([canal,logo])
-        await fetch(`https://que-veo2-0-api.vercel.app/canales/${canal}`,{method:"GET"}).then(response=>(response.json()).then(response=>{prog.current=response[canal]}))
+        await fetch(`https://que-veo2-0-api.vercel.app/canales/${canal.replace(/\s/g, '-')}`,{method:"GET"}).then(response=>(response.json()).then(response=>{prog.current=response[canal]}))
 
         const listaNueva = []
         let contador = 0;
