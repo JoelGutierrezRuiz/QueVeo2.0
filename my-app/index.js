@@ -326,5 +326,5 @@ App.get("/canales/:canal",cors(), (req,res)=>{
 })
 
 App.get("/programas/:programa", cors(),(req,res)=>{
-    res.send(BuscarImdbSolo(req.params.programa))
+    BuscarImdbSolo(req.params.programa).then(response=>{res.send(response)})
 }) 

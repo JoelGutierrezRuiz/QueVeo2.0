@@ -10,10 +10,11 @@ function ProgramaCanal (props) {
 
     const element = useRef(null)
     const [infoContainer,setInfoContainer] = useState(false);
+    const puntuacion = useRef(null)
 
 
     const LoadImdb = async ()=>{
-        await fetch("https://que-veo2-0-api.vercel.app/",{method:"GET"}).then(response=>(response.json()).then(response=>{listaCanales.current=response}))
+        await fetch(`https://que-veo2-0-api.vercel.app/programas/${props.title}`,{method:"GET"}).then(response=>(response.json()).then(response=>{console.log(response);puntuacion.current=response}))
     }
 
     return(
@@ -37,7 +38,7 @@ function ProgramaCanal (props) {
         }
 
 
-            <div onClick={()=>{setInfoContainer(true)}} className="main__programa">
+            <div onClick={()=>{LoadImdb() ;setInfoContainer(true)}} className="main__programa">
 
                 <div className="programa-info">
                     <p>{props.time}</p>
