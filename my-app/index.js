@@ -83,7 +83,7 @@ async function SacarEnlaces(){
             channel = channel.trim().toLowerCase()
             const logo = $(this).find("img").attr("src")
             
-            programas.push([channel.replace(/\s/g, '-'),html])
+            programas.push([channel,html])
             
             
         })
@@ -251,7 +251,7 @@ async function BuscarProgramas (){
     return listaFinal
 }
 
-//BuscarProgramas().then(response=>{SubirInfo(response)})
+BuscarProgramas().then(response=>{SubirInfo(response)})
 
 const movie = "avatar"
 
@@ -317,7 +317,7 @@ App.get("/",cors(), (req,res)=>{
 })
 
 App.get("/canales/:canal",cors(), (req,res)=>{
-    Task.findById("63abe2524d103d1f347ffc1a",req.params.canal,function(err,doc){
+    Task.findById("63abe2524d103d1f347ffc1a",req.params.canal.replace(/\s/g, '-'),function(err,doc){
         console.log(doc);res.send(doc)
     })
 
