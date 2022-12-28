@@ -317,7 +317,7 @@ App.get("/",cors(), (req,res)=>{
 })
 
 App.get("/canales/:canal",cors(), (req,res)=>{
-    Task.findById("63abe2524d103d1f347ffc1a",req.params.canal.replace(/\s/g, '-'),function(err,doc){
+    Task.findById("63abe2524d103d1f347ffc1a",req.params.canal.replace('%20', '-'),function(err,doc){
         console.log(doc);res.send(doc)
     })
 
