@@ -251,7 +251,7 @@ async function BuscarProgramas (){
     return listaFinal
 }
 
-BuscarProgramas().then(response=>{SubirInfo(response)})
+//BuscarProgramas().then(response=>{SubirInfo(response)})
 
 const movie = "avatar"
 
