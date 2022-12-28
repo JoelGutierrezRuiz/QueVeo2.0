@@ -11,6 +11,11 @@ function ProgramaCanal (props) {
     const element = useRef(null)
     const [infoContainer,setInfoContainer] = useState(false);
 
+
+    const LoadImdb = async ()=>{
+        await fetch("https://que-veo2-0-api.vercel.app/",{method:"GET"}).then(response=>(response.json()).then(response=>{listaCanales.current=response}))
+    }
+
     return(
     <>  
         {

@@ -250,6 +250,56 @@ async function BuscarProgramas (){
 
 //BuscarProgramas().then(response=>{SubirInfo(response)})
 
+const movie = "avatar"
+
+async function BuscarImdbSolo(film){
+
+    
+
+    
+
+    let imdbRate = {}
+        
+    try{
+        let filtro = []
+        let resultado = null
+            
+        const filmPAge = await  axios(`https://www.imdb.com/find?q=${film}&ref_=nv_sr_sm`,{ 
+            headers: { "Accept-Encoding": "gzip,deflate,compress",Host:"www.imdb.com", "User-Agent":"Mozilla/5.0 (Macintosh; Intel)" } 
+        })
+    
+        const htmlFilm = filmPAge.data
+        const $ = cheerio.load(htmlFilm)
+    
+        $(".ipc-metadata-list-summary-item__t",htmlFilm).each(function(){
+            let peliculaUrl = $(this).text().trim()
+            filtro.push(peliculaUrl="https://www.imdb.com/"+$(this).attr("href"))
+            resultado = filtro
+        })
+    
+        const ratePage = await axios(resultado[0],{ 
+            headers: { "Accept-Encoding": "gzip,deflate,compress",Host:"www.imdb.com", "User-Agent":"Mozilla/5.0 (Macintosh; Intel)" } 
+        })
+        htmlRate = ratePage.data
+        pepe= cheerio.load(htmlRate)
+    
+        pepe(".sc-83544c38-2",htmlRate).each(function(){
+            const puntuacion = pepe(this).find(".sc-7ab21ed2-1").text()
+            const trailer = pepe(this).find("video").attr("href")
+            imdbRate[film]=puntuacion
+    
+        })
+        }catch{}
+
+    await sleep(500)    
+    console.log(imdbRate)
+    return imdbRate
+    
+    
+    
+
+}
+
 
 
 
@@ -274,3 +324,7 @@ App.get("/canales/:canal",cors(), (req,res)=>{
 
 
 })
+
+App.get("/programas/:programa", cors(),(req,res)=>{
+    res.send(BuscarImdbSolo(req.params.programa))
+}) 
