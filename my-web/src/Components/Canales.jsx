@@ -71,7 +71,8 @@ function Canales (){
 
         setCanalInfo([canal,logo])
 
-        await fetch(`https://que-veo2-0-api.vercel.app/canales/${canal}`,{method:"GET"}).then(response=>(response.json()).then(response=>{prog.current=response[canal]}))
+
+        await fetch(`https://que-veo2-0-api.vercel.app/canales/${canalcanal.replace(/\s/g, '-')}`,{method:"GET"}).then(response=>(response.json()).then(response=>{prog.current=response[canalcanal.replace(/\s/g, '-')]}))
 
         const listaNueva = []
         let contador = 0;
