@@ -11,11 +11,11 @@ function ProgramaCanal (props) {
     const element = useRef(null)
     const [infoContainer,setInfoContainer] = useState(false);
     const puntuacion = useRef(null)
-    const [prueba,setPrueba] = useState(false);
+    const [imdb,setImdb] = useState(false);
 
 
     const LoadImdb = async ()=>{
-        await fetch(`https://que-veo2-0-api.vercel.app/programas/${props.title}`,{method:"GET"}).then(response=>(response.json()).then(response=>{console.log(response);setPrueba(response[props.title])}))
+        await fetch(`https://que-veo2-0-api.vercel.app/programas/${props.title}`,{method:"GET"}).then(response=>(response.json()).then(response=>{console.log(response);setImdb(response[props.title])}))
     }
 
     return(
@@ -32,7 +32,17 @@ function ProgramaCanal (props) {
                         <img style={!props.img?{"display":"none"}:null} className="infoPrograma-img"  ref={element} src={props.img} ></img>
                     </div>
                     <p className="infoPrograma-sipnosis">{props.sipnosis}</p>
-                    <p className="infoPrograma-rate">{prueba?prueba:null}</p>
+                    {imdb?
+                        <div className="infoPrograma-rate-container">
+
+                            <div className="infoPrograma-rate-img-container">
+                                <img className="infoPrograma-rate-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/IMDB_Logo_2016.svg/2560px-IMDB_Logo_2016.svg.png"></img>
+                            </div>
+                            
+                            <p className="infoPrograma-rate">{imdb}</p>
+                        </div>
+                    :null
+                    }
                 </div>
 
             </div>
