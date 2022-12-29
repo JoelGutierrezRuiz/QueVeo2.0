@@ -67,6 +67,7 @@
 
 
 .main__infoPrograma{
+    
     display: flex;
     justify-content: center;
     align-items: center;
@@ -79,6 +80,7 @@
 
 /*principal inside container*/
 .infoPrograma-container{
+    outline:2px solid rgb(126, 143, 145);
     padding: 20px;
     display: grid;
     grid-template-rows: auto auto auto auto auto;
